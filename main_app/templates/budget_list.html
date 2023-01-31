@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% comment %} for head title tags and helping us with SEO {% endcomment %}
+{% block title %}Budgets{% endblock  %}
+
+{% block content %}
+
+<h1 class="title pt-5">All Budgets</h1>
+<form class="mb-5" method="get">
+  <div class="field has-addons">
+    <div class="control">
+      <!--  Our input will search by name of budget  -->
+      <input class="input" type="text" name="name" placeholder="name" />
+    </div>
+    <div class="control">
+      <input class="button is-success" type="submit" value="Search" />
+    </div>
+  </div>
+  <!--  This anchor tag will redirect back to artist list without a query param -->
+  <a class="button is-dark" href="{% url 'budget_list' %}">Clear Search</a>
+</form>
+<div class="gallery">
+  {% for budget in budgets %}
+  <a href="">
+    <div class="card">
+      <div class="card-header">
+        <p class="card-header-title">{{budget.name}}</p>
+      </div>
+      <div class="amount">
+        <p>{{budget.amount}}</p>
+      </div>
+    </div>
+  </a>
+	{% empty %}
+  <article class="message">
+    <div class="message-header">
+      <p>No Budgets Available</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
