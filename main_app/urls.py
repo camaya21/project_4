@@ -1,9 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
     path('', views.Home.as_view(), name="home"),
     path('about/', views.About.as_view(), name="about"),
     path('budgets/', views.BudgetList.as_view(), name="budget_list"),
-    path('bugdets/new/', views.BudgetCreate.as_view(), name="budget_create")
+    path('bugdets/new/', views.BudgetCreate.as_view(), name="budget_create"),
+    path('budgets/<int:pk>/', views.BudgetDetail.as_view(), name="budget_detail")
 ]

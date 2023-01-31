@@ -3,7 +3,8 @@ from django.views.generic.base import TemplateView
 from django.views import View
 from django.http import HttpResponse
 from .models import Budget
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 # Create your views here.
 
  #adds artist class for mock database data
@@ -34,4 +35,7 @@ class BudgetCreate(CreateView):
     template_name = "budget_create.html"
     success_url = "/budgets/"
 
+class BudgetDetail(DetailView):
+    model = Budget
+    template_name = "budget_detail.html"
 
