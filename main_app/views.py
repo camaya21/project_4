@@ -18,7 +18,11 @@ class BudgetList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["budgets"] = Budget.objects.all # this is where we add the key into our context object for the view to use
+        name = self.request.GET.get("name")
+        if name != None:
+            context["budgets"] = Budget.objects.filter(name__icontains=name)
+        else:
+            context["budgets"]= Budget.objects.all()
         return context
 
 
