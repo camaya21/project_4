@@ -5,12 +5,12 @@
 </div>
 <div class="detail__container">
     <div class="buttons">
-        <a href="{% url 'budget_update' budget.pk %}" class="button is-info"> Updates   
+        <a href="{% url 'budget_update' budget.pk %}" class="button is-info">   
             <span class="icon">
                 <i class="fas fa-edit"></i>
             </span>
         </a>
-        <a href="" class="button is-danger">
+        <a href="{% url 'budget_delete' budget.pk %}" class="button is-danger">
             <span class="icon">
                 <i class="fas fa-trash-alt"></i>
             </span>

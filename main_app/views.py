@@ -47,3 +47,8 @@ class BudgetUpdate(UpdateView):
 
     def get_success_url(self):
         return reverse('budget_detail', kwargs={'pk': self.object.pk})
+
+class BudgetDelete(DeleteView):
+    model = Budget
+    template_name = "budget_delete_confirmation.html"
+    success_url = "/budgets/"
