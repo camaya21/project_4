@@ -3,6 +3,7 @@ from django.views.generic.base import TemplateView
 from django.views import View
 from django.http import HttpResponse
 from .models import Budget
+from django.views.generic.edit import CreateView
 # Create your views here.
 
  #adds artist class for mock database data
@@ -21,8 +22,16 @@ class BudgetList(TemplateView):
         name = self.request.GET.get("name")
         if name != None:
             context["budgets"] = Budget.objects.filter(name__icontains=name)
+            context["header"] = f"searching for {name}"
         else:
             context["budgets"]= Budget.objects.all()
+            context["header"] = "All Budgets"
         return context
+
+class BudgetCreate(CreateView):
+    model = Budget
+    fields = ['name', 'amount']
+    template_name = "budget_create.html"
+    success_url = "/budgets/"
 
 
