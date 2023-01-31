@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from .models import Budget
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
+from django.urls import reverse
 # Create your views here.
 
  #adds artist class for mock database data
@@ -39,3 +40,10 @@ class BudgetDetail(DetailView):
     model = Budget
     template_name = "budget_detail.html"
 
+class BudgetUpdate(UpdateView):
+    model = Budget
+    fields = ['name', 'amount']
+    template_name = "budget_update.html"
+
+    def get_success_url(self):
+        return reverse('budget_detail', kwargs={'pk': self.object.pk})
