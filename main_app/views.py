@@ -8,6 +8,8 @@ from django.views.generic.detail import DetailView
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 
@@ -18,7 +20,8 @@ class Home(TemplateView):
 
 class About(TemplateView):
     template_name = "about.html"
-
+    
+@method_decorator(login_required, name='dispatch')
 class BudgetList(TemplateView):
     template_name = "budget_list.html"
 
@@ -61,3 +64,19 @@ class BudgetDelete(DeleteView):
     model = Budget
     template_name = "budget_delete_confirmation.html"
     success_url = "/budgets/"
+
+class Signup(View):
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+    
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("budget_list")
+        else:
+            context = {"form": form}
+            return render(request, "registration/signup.html", context)
