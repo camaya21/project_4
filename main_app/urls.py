@@ -1,5 +1,8 @@
 from django.urls import path, include
 from . import views
+from django.contrib import admin
+# from django.conf.urls.static import static
+# from django.conf import settings
 
 urlpatterns = [
     path('', views.Home.as_view(), name="home"),
@@ -9,4 +12,6 @@ urlpatterns = [
     path('budgets/<int:pk>/', views.BudgetDetail.as_view(), name="budget_detail"),
     path('budgets/<int:pk>/update', views.BudgetUpdate.as_view(), name="budget_update"),
     path('budgets/<int:pk>/delete', views.BudgetDelete.as_view(), name="budget_delete"),
+    path('accounts/signup/', views.Signup.as_view(), name="signup"),
+    
 ]

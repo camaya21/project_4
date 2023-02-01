@@ -6,6 +6,9 @@ from .models import Budget
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+
 # Create your views here.
 
  #adds artist class for mock database data
@@ -23,10 +26,10 @@ class BudgetList(TemplateView):
         context = super().get_context_data(**kwargs)
         name = self.request.GET.get("name")
         if name != None:
-            context["budgets"] = Budget.objects.filter(name__icontains=name)
+            context["budgets"] = Budget.objects.filter(name__icontains=name, user=self.request.user)
             context["header"] = f"searching for {name}"
         else:
-            context["budgets"]= Budget.objects.all()
+            context["budgets"]= Budget.objects.filter(user=self.request.user)
             context["header"] = "All Budgets"
         return context
 
@@ -34,7 +37,13 @@ class BudgetCreate(CreateView):
     model = Budget
     fields = ['name', 'amount']
     template_name = "budget_create.html"
-    success_url = "/budgets/"
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(BudgetCreate, self).form_valid(form)
+
+    def get_success_url(self):
+        print(self.kwargs)
+        return reverse('budget_detail', kwargs={'pk': self.object.pk})
 
 class BudgetDetail(DetailView):
     model = Budget

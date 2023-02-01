@@ -26,6 +26,16 @@
                 <a class="navbar-item" href="/about">About Page</a>
                 <a class="navbar-item" href="/budgets">Budget Page</a>
             </div>
+            {% if user.is_authenticated %}
+                    <div class="navbar-menu navbar-end">
+                        <span class="navbar-item">Welcome: {{user.username}}</span>
+                        <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                {% else %}
+                    <div class="navbar-menu navbar-end">
+                        <a class="navbar-item" href="{% url 'login' %}">Log In</a>
+                    </div>
+                {% endif %}
         </nav>
         <div class="container">
 
