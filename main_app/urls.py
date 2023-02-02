@@ -17,5 +17,6 @@ urlpatterns = [
     # Expense Paths
     path('expenses/', views.ExpenseList.as_view(), name="expense_list"),
     path('expenses/new/', views.ExpenseCreate.as_view(), name="expense_create"),
+    path('expenses/<int:pk>/update', views.ExpenseUpdate.as_view(), name="expense_update"),
     
 ]

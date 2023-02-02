@@ -18,16 +18,24 @@
 </form>
 <div class="gallery">
   {% for expense in expenses %}
-  <a href="">
     <div class="card">
       <div class="card-header">
         <p class="card-header-title">{{expense.name}}</p>
+        <p class="amount">{{expense.amount}}</p>
       </div>
-      <div class="amount">
-        <p>{{expense.amount}}</p>
-      </div>
+      <div class="buttons">
+        <a href="{% url 'expense_update' expense.pk %}" class="button is-info">
+            <span class="icon">
+                <i class="fas fa-edit"></i>
+            </span>
+        </a>
+        <a href="" class="button is-danger">
+            <span class="icon">
+                <i class="fas fa-trash-alt"></i>
+            </span>
+        </a>
     </div>
-  </a>
+    </div>
   {% endfor %}
 </div>
 
