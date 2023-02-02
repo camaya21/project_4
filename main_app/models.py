@@ -14,7 +14,7 @@ class Budget(models.Model):
     class Meta:
         ordering = ['name']
 
-class Expenses(models.Model):
+class Expense(models.Model):
     name = models.CharField(max_length=100)
     amount = MoneyField(max_digits=19, decimal_places=4, default_currency='USD')
     date = models.DateField(null=True)

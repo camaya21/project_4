@@ -3,6 +3,7 @@ from django.views.generic.base import TemplateView
 from django.views import View
 from django.http import HttpResponse
 from .models import Budget
+from .models import Expense
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
@@ -21,6 +22,8 @@ class Home(TemplateView):
 class About(TemplateView):
     template_name = "about.html"
 
+
+# BUDGET ROUTES
 @method_decorator(login_required, name='dispatch')
 class BudgetList(TemplateView):
     template_name = "budget_list.html"
@@ -80,3 +83,21 @@ class Signup(View):
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
+
+# EXPENSES ROUTES
+class ExpenseList(TemplateView):
+    template_name = "expense_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        if name != None:
+            context["expenses"] = Expense.objects.filter(name__icontains=name)
+            context["header"] = f"Searching for {name}"
+        else:
+            context["expenses"] = Expense.objects.all()
+            context["header"] = "All Expenses"
+        return context
+
+
+
