@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views import View
 from django.http import HttpResponse
@@ -20,7 +20,7 @@ class Home(TemplateView):
 
 class About(TemplateView):
     template_name = "about.html"
-    
+
 @method_decorator(login_required, name='dispatch')
 class BudgetList(TemplateView):
     template_name = "budget_list.html"
