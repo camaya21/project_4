@@ -16,5 +16,6 @@ urlpatterns = [
     path('accounts/signup/', views.Signup.as_view(), name="signup"),
     # Expense Paths
     path('expenses/', views.ExpenseList.as_view(), name="expense_list"),
+    path('expenses/new/', views.ExpenseCreate.as_view(), name="expense_create"),
     
 ]

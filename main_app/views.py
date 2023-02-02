@@ -99,5 +99,9 @@ class ExpenseList(TemplateView):
             context["header"] = "All Expenses"
         return context
 
-
+class ExpenseCreate(CreateView):
+    model = Expense
+    fields = ['name', 'amount', 'date']
+    template_name = "expense_create.html"
+    success_url = "/expenses/"
 
