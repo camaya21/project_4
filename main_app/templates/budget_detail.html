@@ -35,10 +35,13 @@
             {% endfor %}
         </div>
     </div>
+    {% for expense in budget.expenses.all %}
     <div class="detail__about">
         <h4 class="title is-4">Amount</h4>
         <p>{{budget.amount}}</p>
     </div>
+    {% endfor %}
+    
 </div>
 
 {% endblock %}
