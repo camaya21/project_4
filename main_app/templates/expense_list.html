@@ -22,6 +22,7 @@
       <div class="card-header">
         <p class="card-header-title">{{expense.name}}</p>
         <p class="amount">{{expense.amount}}</p>
+        <p class="date">{{expense.date}}</p>
       </div>
       <div class="buttons">
         <a href="{% url 'expense_update' expense.pk %}" class="button is-info">
@@ -29,7 +30,7 @@
                 <i class="fas fa-edit"></i>
             </span>
         </a>
-        <a href="" class="button is-danger">
+        <a href="{% url 'expense_delete' expense.pk %}" class="button is-danger">
             <span class="icon">
                 <i class="fas fa-trash-alt"></i>
             </span>

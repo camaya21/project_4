@@ -111,4 +111,7 @@ class ExpenseUpdate(UpdateView):
     template_name = "expense_update.html"
     success_url = "/expenses/"
 
-
+class ExpenseDelete(DeleteView):
+    model = Expense
+    template_name = "expense_delete_confirmation.html"
+    success_url = "/expenses/"
