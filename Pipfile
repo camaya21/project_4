@@ -4,11 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-django-heroku = "*"
-django-on-heroku = "*"
+django-admin = "*"
 gunicorn = "*"
+django-on-heroku = "*"
+python-dotenv = "*"
 whitenoise = "*"
+django-money = "*"
 
 [dev-packages]
 
