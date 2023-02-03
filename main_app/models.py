@@ -18,6 +18,7 @@ class Expense(models.Model):
     name = models.CharField(max_length=100)
     amount = MoneyField(max_digits=19, decimal_places=4, default_currency='USD')
     date = models.DateField(null=True)
+    budget = models.ForeignKey(Budget, on_delete=models.CASCADE, related_name="expenses", default=1)
     
     def __str__(self):
         return self.name
@@ -26,3 +27,4 @@ class Expense(models.Model):
         ordering = ['name']
 
 # Create your models here.
+1

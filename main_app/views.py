@@ -101,13 +101,13 @@ class ExpenseList(TemplateView):
 
 class ExpenseCreate(CreateView):
     model = Expense
-    fields = ['name', 'amount', 'date']
+    fields = ['name', 'amount', 'date', 'budget']
     template_name = "expense_create.html"
     success_url = "/expenses/"
 
 class ExpenseUpdate(UpdateView):
     model = Expense
-    fields = ['name', 'amount', 'date']
+    fields = ['name', 'amount', 'date', 'budget']
     template_name = "expense_update.html"
     success_url = "/expenses/"
 
