@@ -14,8 +14,6 @@ from django.utils.decorators import method_decorator
 
 # Create your views here.
 
- #adds artist class for mock database data
-
 class Home(TemplateView):
     template_name = "home.html"
 
@@ -54,7 +52,8 @@ class BudgetCreate(CreateView):
 class BudgetDetail(DetailView):
     model = Budget
     template_name = "budget_detail.html"
-
+    
+    
 class BudgetUpdate(UpdateView):
     model = Budget
     fields = ['name', 'amount']
@@ -85,6 +84,7 @@ class Signup(View):
             return render(request, "registration/signup.html", context)
 
 # EXPENSES ROUTES
+@method_decorator(login_required, name='dispatch')
 class ExpenseList(TemplateView):
     template_name = "expense_list.html"
 
@@ -115,3 +115,4 @@ class ExpenseDelete(DeleteView):
     model = Expense
     template_name = "expense_delete_confirmation.html"
     success_url = "/expenses/"
+

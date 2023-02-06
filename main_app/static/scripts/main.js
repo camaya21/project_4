@@ -4,10 +4,4 @@ $(".navbar-burger").click(function () {
     $(".navbar-menu").toggleClass("is-active");
 });
 
-const exAmount = document.querySelectorAll('ex-amount')
-const budAmount = document.querySelectorAll('bud-amount')
-
-function subtract(exAmount, budAmount){
-    return exAmount-budAmount;
-}
-subtract()
+console.log("heyyy")

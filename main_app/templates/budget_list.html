@@ -23,7 +23,7 @@
 <div class="gallery">
   {% for budget in budgets %}
   <a href="{% url 'budget_detail' budget.pk %}">
-    <div class="card">
+    <div class="bud-card">
       <div class="card-header">
         <p class="card-header-title">{{budget.name}}</p>
       </div>

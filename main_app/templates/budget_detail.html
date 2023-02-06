@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load mathfilters %}
 {% block title%}{{budget.name}}{% endblock%}
 {% block content %}
     <h1 class="title">{{budget.name}}</h1>
@@ -15,33 +16,30 @@
                 <i class="fas fa-trash-alt"></i>
             </span>
         </a>
-        <div class="detail__expenses mb-5">
-            <h3 class="title is-3">Expenses</h3>
-        
-            {% for expense in budget.expenses.all %}
-            <div class="song">
-              <span>{{forloop.counter}}</span>
-              <span><b>{{expense.name}}</b></span>
-              <span>{{expense.amount}}</span>
-              <span>{{expense.date}}</span>
-            </div>
-                {% empty %}
-            <article class="message">
-              <div class="message-header">
-                <p>No expenses available</p>
-              </div>
-            </article>
-        
-            {% endfor %}
-        </div>
     </div>
-    {% for expense in budget.expenses.all %}
     <div class="detail__about">
         <h4 class="title is-4">Amount</h4>
-        <p>{{budget.amount}}</p>
+        <p>total: {{total}}</p>
     </div>
-    {% endfor %}
+    <div class="detail__expenses mb-5">
+        <h3 class="title is-3">Expenses</h3>
     
+        {% for expense in budget.expenses.all %}
+        <div class="expenses-card">
+          <span>{{forloop.counter}}</span>
+          <span><b>{{expense.name}}</b></span>
+          <span>{{expense.amount}}</span>
+          <span>{{expense.date}}</span>
+        </div>
+            {% empty %}
+        <article class="message">
+          <div class="message-header">
+            <p>No expenses available</p>
+          </div>
+        </article>
+    
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
