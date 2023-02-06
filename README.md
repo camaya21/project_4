@@ -4,7 +4,7 @@ Welcome!
 
 Checkout the deployed app! https://e-tracker.herokuapp.com/
 
-Expense Tracker is an app for keeping track of all your expenses. With the app, users can create monthly budgets for themselves and make sure they're staying within their spedning range by also creating expenses. These expenses go into their own budgets and can be edited or deleted. 
+Expense Tracker is an app for keeping track of all your expenses. With the app, users can create monthly budgets for themselves and make sure they're staying within their spending range by also creating expenses. These expenses go into their own budgets and can be edited or deleted. 
 
 Home
 
