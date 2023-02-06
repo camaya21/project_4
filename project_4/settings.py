@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main_app',
     'djmoney',
-    'mathfilters',
 ]
 
 MIDDLEWARE = [
