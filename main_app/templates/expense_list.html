@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
 
-<h1 class="title">{{header}}</h1>
+<h1 class="title-detail">{{header}}</h1>
 
 <form class="mb-5" method="get">
   <div class="field has-addons">
@@ -22,10 +22,10 @@
     <div class="ex-card">
       <div class="card-header">
         <p class="card-header-title">{{expense.name}}</p>
-        <p class="ex-amount">{{expense.amount}}</p>
-        <p class="date">{{expense.date}}</p>
+        <p class="ex-amount-expense">{{expense.amount}}</p>
+        <p class="date-expense">{{expense.date}}</p>
       </div>
-      <div class="buttons">
+        <div class="buttons-expense">
         <a href="{% url 'expense_update' expense.pk %}" class="button is-info">
             <span class="icon">
                 <i class="fas fa-edit"></i>

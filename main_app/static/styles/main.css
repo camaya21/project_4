@@ -1,5 +1,5 @@
 .navbar {
-    background: #87b6b8;
+    background: #FF5E5B;
 }
 
 body {
@@ -7,11 +7,35 @@ body {
 }
 
 
-.gallery {
+.gallery, .gallery-about {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     justify-content: center;
     gap: 30px;
+}
+
+.gallery {
+    padding: 0 20px 20px 30px;
+}
+
+.gallery-detail {
+    display: grid;
+    column-gap: 50px;
+    justify-content: left;
+    margin-left: 100px;
+    gap: 40px;
+}
+
+.gallery-about {
+    display: grid;
+    column-gap: 50px;
+    justify-content: left;
+    margin-left: 100px;
+}
+
+.ex-amount, .date {
+    padding-top: 10px;
+    padding-right: 40px;
 }
 
 .gallery .card {
@@ -24,5 +48,55 @@ body {
 }
 
 p {
-    font-size: 15px;
+    font-size: 20px;
+}
+
+.detail__container {
+    margin-top: 100px;
+}
+
+.expenses-card {
+    margin-left: 100px;
+    font-size: 30px;
+    padding: 0 20px 20px 30px;
+}
+
+.title, .detail-buttons {
+    margin-left: 100px;
+    margin-bottom: 50px;
+}
+
+.title-detail {
+    margin-top: 20px;
+    font-size: 50px;
+}
+
+.buttons-expense {
+    margin-top: 10px;
+}
+
+.ex-amount-expense, .date-expense {
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+.card-header {
+    background: #80E7DB;
+}
+
+.welcome, .home-sign, .about-p {
+    text-align: center;
+}
+
+.welcome {
+    margin-top: 100px;
+    font-size: 175px;
+}
+
+.home-sign .about-p {
+    font-size: 30px;
+}
+
+.about-p {
+    margin: 100px
 }

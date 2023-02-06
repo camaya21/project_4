@@ -2,10 +2,10 @@
 {% load mathfilters %}
 {% block title%}{{budget.name}}{% endblock%}
 {% block content %}
-    <h1 class="title">{{budget.name}}</h1>
+    <h1 class="title-detail">{{budget.name}}</h1>
 </div>
 <div class="detail__container">
-    <div class="buttons">
+    <div class="detail-buttons">
         <a href="{% url 'budget_update' budget.pk %}" class="button is-info">   
             <span class="icon">
                 <i class="fas fa-edit"></i>
@@ -18,18 +18,18 @@
         </a>
     </div>
     <div class="detail__about">
-        <h4 class="title is-4">Amount</h4>
-        <p>total: {{total}}</p>
+        <h4 class="title is-3">Amount: </h4>
     </div>
     <div class="detail__expenses mb-5">
-        <h3 class="title is-3">Expenses</h3>
-    
+        <h3 class="title is-2">Expenses</h3>
+    <div class="gallery-detail">
         {% for expense in budget.expenses.all %}
-        <div class="expenses-card">
-          <span>{{forloop.counter}}</span>
-          <span><b>{{expense.name}}</b></span>
-          <span>{{expense.amount}}</span>
-          <span>{{expense.date}}</span>
+        <div class="ex-card">
+            <div class="card-header">
+              <p class="card-header-title">{{expense.name}}</p>
+              <p class="ex-amount">{{expense.amount}}</p>
+              <p class="date">{{expense.date}}</p>
+            </div>
         </div>
             {% empty %}
         <article class="message">
@@ -39,6 +39,7 @@
         </article>
     
         {% endfor %}
+    </div>
     </div>
 </div>
 
